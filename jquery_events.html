@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Events</title>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+
+        $(document).ready(function() {
+                $("#button01").click(function(){
+                        window.alert("Button Clicked using .click()");
+                });
+
+                $("#button02").bind('click',function(){
+                        window.alert("Button Clicked using .bind()");
+                });
+
+                $("#button03").on('click',function(){
+                        window.alert("Button Clicked using .on()");
+                });
+
+                $(".button04").on('click',function(){
+                        window.alert("Button Clicked");
+                });
+                
+                $('#div01').width('400px')
+                         .height('400px')
+                         .css('background-color','red')
+                         .on({
+                            'mouseenter':function(){
+                                //window.alert("You entered the div area");
+                                $('#span01').text("You entered the div area")
+                            },
+                            'mouseleave':function(){
+                                //window.alert("You left the div area");
+                                $('#span01').text("You left the div area")
+                            },
+                            'click': function(){
+                                //window.alert("you clicked the div area");
+                                $('#span01').text("You clicked the div area")
+                            }
+                         });   
+
+                $('#moduleMedia').on('click',function(e){
+                    e.preventDefault();
+                    $(this).css('color','red');
+                    window.alert(e.target.nodeName+ " triggered the event")
+                });
+
+                $(function(){
+                    $(window).resize(function(){
+                            $('#display').text("Width:" + $(window).width() +"  "+"Height:"+ $(window).height() );
+                    });
+                });
+
+                $('#textfield').on({
+                    'focus':function(){
+                        $('#textfield').css('background-color','silver');
+                    },
+                    'blur':function(){
+                        $('#textfield').css('background-color','white');
+                    }
+                });
+
+
+                $('#form').on('submit',function(e){
+                        e.preventDefault();
+                        var name=$('#name').val;
+                        if(name){
+                            $('#name').css('border','1px solid green');
+                        }
+                        else{
+                            $('#name').css('border','1px solid red');
+                            window.alert('Please enter the name');
+                        }
+
+                        var email=$('#email').val();
+                        if(email){
+                            $('#email').css('border','1px solid green');
+                        }
+                        else{
+                            $('#email').css('border','1px solid red');
+                            window.alert('Please enter the email');
+
+                        }
+
+                });
+
+        });
+
+
+    </script>
+</head>
+<body>
+        
+        <button id="button01">click method</button><br>
+        <button id="button02">bind method</button><br>
+        <button id="button03">on method</button><br>
+        <button class="button04">1 button</button>
+        <button class="button04">2 button</button><br>
+
+        <div id="div01"></div>
+        <span id="span01"></span><br><br><br>
+
+        <a id="moduleMedia" href="https://modulemedia.com">Module Media</a><br><br>
+
+        <div id="display"></div><br><br>
+
+        <input id="textfield" type="text"><br><br>
+
+        <h1>Form</h1>
+        <form id="form">
+            <input id="name" placeholder="Eg: John" type="text">
+            <span id="err1"></span><br><br>
+            <input id="email" placeholder="Eg: John@gmail.com" type="email">
+            <span id="err2"></span><br><br>
+            <input type="submit">
+        </form>
+
+</body>
+</html>
