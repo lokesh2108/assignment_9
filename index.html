@@ -6,6 +6,32 @@
   <link href="styles/normalize.css" type="text/css" rel="stylesheet">
   <link href="styles/styles.css" type="text/css" rel="stylesheet">
   <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script>
+		$(document).ready(function() {
+				$('aside h2,section h2').css('border','solid balck 1px')
+										.css('color','#CC1C0D')
+										.css('padding-top','3px')
+										.css('padding-bottom','3px')
+										.css('padding-left','20px')
+										.css('border-radius','0px 5px 0px 5px')
+										.css('background-color','#DFE3E6');
+
+				$('nav ul li a').addClass('navigation');
+
+				$('.navigation').css('border','solid balck 1px')
+										.css('color','#CC1C0D')
+										.css('padding-top','3px')
+										.css('padding-bottom','3px')
+										.css('padding-left','20px')
+										.css('background-color','#DFE3E6');
+
+				$('main section p').removeClass('vprospect').removeClass('vconvert').removeClass('vretain');
+				$('aside p:last-child').append('<br>Chevy Dealers Association');
+				$('aside p:nth-of-child(1)').wrapInner('<q></q>');
+
+		});
+  </script>
 </head>
 
 <body>
